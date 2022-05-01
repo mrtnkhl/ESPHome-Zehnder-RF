@@ -33,11 +33,11 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-  manual_ip:
-    static_ip: !secret wifi_ip_utility_bridge
-    gateway: !secret wifi_gateway
-    subnet: !secret wifi_subnet
-    dns1: !secret wifi_gateway
+  # manual_ip:
+  #   static_ip: !secret wifi_ip_utility_bridge
+  #   gateway: !secret wifi_gateway
+  #   subnet: !secret wifi_subnet
+  #   dns1: !secret wifi_gateway
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
