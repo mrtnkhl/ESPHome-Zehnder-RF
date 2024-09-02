@@ -572,11 +572,13 @@ uint8_t nRF905::readStatus(void) {
 }
 
 void nRF905::spiTransfer(uint8_t *const data, const size_t length) {
-  this->enable();
-
-  this->transfer_array(data, length);
-
-  this->disable();
+  if(data) {
+    this->enable();
+    
+    this->transfer_array(data, length);
+  
+    this->disable();
+  }
 }
 
 char *nRF905::hexArrayToStr(const uint8_t *const pData, const size_t dataLength) {
