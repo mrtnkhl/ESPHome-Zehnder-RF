@@ -99,6 +99,7 @@ void ZehnderRF::setup() {
 
   // Set nRF905 config
   nrf905::Config rfConfig;
+  this->rf_->spi_setup();
   rfConfig = this->rf_->getConfig();
 
   rfConfig.band = true;
