@@ -227,7 +227,7 @@ void nRF905::writeConfigRegisters(uint8_t *const pStatus) {
 #if CHECK_REG_WRITE
   (void) memcpy(writeData, buffer.data, NRF905_REGISTER_COUNT);
 #endif
-
+  this->spi_setup();
   this->spiTransfer((uint8_t *) &buffer, sizeof(ConfigBuffer));
 
 #if CHECK_REG_WRITE
