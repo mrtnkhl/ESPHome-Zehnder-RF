@@ -278,7 +278,7 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
       break;
 
     case StateDiscoveryWaitForJoinResponse:
-      ESP_LOGD(TAG, "DiscoverStateWaitForJoinResponse bla bla bla");
+      ESP_LOGD(TAG, "Bla Bla Bla DiscoverStateWaitForJoinResponse bla bla bla");
       switch (pResponse->command) {
         case FAN_FRAME_0B:
           ESP_LOGD(TAG, "Frame 0B received, in the IF statement");
@@ -286,7 +286,7 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
               (pResponse->rx_id == this->config_.fan_my_device_id) &&
               (pResponse->tx_type == this->config_.fan_main_unit_type) &&
               (pResponse->tx_id == this->config_.fan_main_unit_id)) {
-            ESP_LOGD(TAG, "Discovery: Link successful to unit with ID 0x%02X on network 0x%08X", pResponse->tx_id,
+            ESP_LOGD(TAG, "Discovery bla bla bla: Link successful to unit with ID 0x%02X on network 0x%08X", pResponse->tx_id,
                      this->config_.fan_networkId);
 
             this->rfComplete();
