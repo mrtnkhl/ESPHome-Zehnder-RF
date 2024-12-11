@@ -323,7 +323,8 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
     case StateDiscoveryJoinComplete:
       ESP_LOGD(TAG, "StateDiscoveryJoinComplete");
       switch (pResponse->command) {
-        case FAN_TYPE_QUERY_NETWORK:
+        //case FAN_TYPE_QUERY_NETWORK:
+        case FAN_NETWORK_JOIN_FINISH:
           if ((pResponse->rx_type == this->config_.fan_main_unit_type) &&
               (pResponse->rx_id == this->config_.fan_main_unit_id) &&
               (pResponse->tx_type == this->config_.fan_main_unit_type) &&
