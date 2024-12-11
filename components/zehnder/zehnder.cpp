@@ -305,12 +305,13 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
             ESP_LOGD(TAG, "Set pTxFrame details");
 
             // Send response frame
-            this->startTransmit(this->_txFrame, FAN_TX_RETRIES, [this]() {
-              ESP_LOGD(TAG, "in the startTransmit, something failed?");
-              ESP_LOGW(TAG, "Query Timeout");
-              this->state_ = StateStartDiscovery;
-            });
+            // this->startTransmit(this->_txFrame, FAN_TX_RETRIES, [this]() {
+            //  ESP_LOGD(TAG, "in the startTransmit, something failed?");
+            //  ESP_LOGW(TAG, "Query Timeout");
+            //  this->state_ = StateStartDiscovery;
+            // });
 
+            ESP_LOGW(TAG, "StateDiscoveryJoinComplete State Change Trigger Next");
             this->state_ = StateDiscoveryJoinComplete;
           } else {
             ESP_LOGE(TAG, "Discovery: Received unknown link success from ID 0x%02X on network 0x%08X", pResponse->tx_id,
