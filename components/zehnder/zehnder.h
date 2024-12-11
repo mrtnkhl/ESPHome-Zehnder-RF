@@ -19,7 +19,7 @@ namespace zehnder {
 /* Fan device types */
 enum {
   FAN_TYPE_BROADCAST = 0x00,       // Broadcast to all devices
-  FAN_TYPE_MAIN_UNIT = 0x01,       // Fans
+  FAN_TYPE_MAIN_UNIT = 0x12,       // Fans, was 0x01
   FAN_TYPE_REMOTE_CONTROL = 0x03,  // Remote controls
   FAN_TYPE_CO2_SENSOR = 0x18
 };  // CO2 sensors
