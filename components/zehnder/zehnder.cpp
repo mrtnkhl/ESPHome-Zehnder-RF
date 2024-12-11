@@ -281,6 +281,7 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
       ESP_LOGD(TAG, "DiscoverStateWaitForJoinResponse");
       switch (pResponse->command) {
         case FAN_FRAME_0B:
+          ESP_LOGD(TAG, "Frame 0B received, in the IF statement");
           if ((pResponse->rx_type == this->config_.fan_my_device_type) &&
               (pResponse->rx_id == this->config_.fan_my_device_id) &&
               (pResponse->tx_type == this->config_.fan_main_unit_type) &&
@@ -289,6 +290,7 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
                      this->config_.fan_networkId);
 
             this->rfComplete();
+            ESP_LOGD(TAG, "rfComplete called");
 
             (void) memset(this->_txFrame, 0, FAN_FRAMESIZE);  // Clear frame data
 
@@ -300,8 +302,11 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
             pTxFrame->command = FAN_FRAME_0B;  // 0x0B acknowledge link successful
             pTxFrame->parameter_count = 0x00;  // No parameters
 
+            ESP_LOGD(TAG, "Set pTxFrame details");
+
             // Send response frame
             this->startTransmit(this->_txFrame, FAN_TX_RETRIES, [this]() {
+              ESP_LOGD(TAG, "in the startTransmit, something failed?");
               ESP_LOGW(TAG, "Query Timeout");
               this->state_ = StateStartDiscovery;
             });
