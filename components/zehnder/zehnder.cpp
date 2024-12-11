@@ -278,7 +278,7 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
       break;
 
     case StateDiscoveryWaitForJoinResponse:
-      ESP_LOGD(TAG, "DiscoverStateWaitForJoinResponse");
+      ESP_LOGD(TAG, "DiscoverStateWaitForJoinResponse bla bla bla");
       switch (pResponse->command) {
         case FAN_FRAME_0B:
           ESP_LOGD(TAG, "Frame 0B received, in the IF statement");
