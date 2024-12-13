@@ -98,7 +98,7 @@ void ZehnderRF::setup() {
   }
 
   // Set config brute force
-  this->config_.fan_networkId = 0xAAF770E5;
+  this->config_.fan_networkId = 0xE570F7AA;
   this->config_.fan_my_device_type = 0x03;
   this->config_.fan_my_device_id = 0x17;
   this->config_.fan_main_unit_type = 0x12;
@@ -123,7 +123,7 @@ void ZehnderRF::setup() {
   rfConfig.rx_power = nrf905::PowerNormal;
 
   //rfConfig.rx_address = 0x89816EA9;  // ZEHNDER_NETWORK_LINK_ID;
-  rfConfig.rx_address = 0xAAF770E5;
+  rfConfig.rx_address = 0xE570F7AA;
   rfConfig.rx_address_width = 4;
   rfConfig.rx_payload_width = 16;
 
