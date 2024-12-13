@@ -98,11 +98,11 @@ void ZehnderRF::setup() {
   }
 
   // Set config brute force
-  this->config_.fan_networkId = 0xE570F7AA;
-  this->config_.fan_my_device_type = 0x03;
-  this->config_.fan_my_device_id = 0x17;
-  this->config_.fan_main_unit_type = 0x12;
-  this->config_.fan_main_unit_id = 0xE6;
+  this->config_.fan_networkId = E570F7AA;
+  this->config_.fan_my_device_type = 03;
+  this->config_.fan_my_device_id = 17;
+  this->config_.fan_main_unit_type = 12;
+  this->config_.fan_main_unit_id = E6;
 
   // Set nRF905 config
   nrf905::Config rfConfig;
