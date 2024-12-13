@@ -97,6 +97,13 @@ void ZehnderRF::setup() {
     ESP_LOGD(TAG, "Config load ok");
   }
 
+  // Set config brute force
+  this->config_.fan_networkId = 0xAAF770E5;
+  this->config_.fan_my_device_type = 0x03;
+  this->config_.fan_my_device_id = 0x17;
+  this->config_.fan_main_unit_type = 0x12;
+  this->config_.fan_main_unit_id = 0xE6;
+
   // Set nRF905 config
   nrf905::Config rfConfig;
   this->rf_->spi_setup();
@@ -172,13 +179,8 @@ void ZehnderRF::loop(void) {
     case StateStartup:
       // Wait until started up
       if (millis() > 15000) {
-        // Set config brute force
-        this->config_.fan_networkId = 0xAAF770E5;
-        this->config_.fan_my_device_type = 0x03;
-        this->config_.fan_my_device_id = 0x17;
-        this->config_.fan_main_unit_type = 0x12;
-        this->config_.fan_main_unit_id = 0xE6;
-        
+        // alternative place to hardcode IDs
+
         // Discovery?
         if ((this->config_.fan_networkId == 0x00000000) || (this->config_.fan_my_device_type == 0) ||
             (this->config_.fan_my_device_id == 0) || (this->config_.fan_main_unit_type == 0) ||
