@@ -197,7 +197,10 @@ void ZehnderRF::loop(void) {
           this->rf_->writeTxAddress(this->config_.fan_networkId);
 
           // Start with query
-          this->queryDevice();
+          //this->queryDevice();
+
+          // Jump to idle instead of query
+          this->state_ = StateIdle;
         }
       }
       break;
