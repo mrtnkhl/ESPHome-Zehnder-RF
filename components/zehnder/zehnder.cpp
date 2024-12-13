@@ -115,7 +115,8 @@ void ZehnderRF::setup() {
   // // RX power normal
   rfConfig.rx_power = nrf905::PowerNormal;
 
-  rfConfig.rx_address = 0x89816EA9;  // ZEHNDER_NETWORK_LINK_ID;
+  //rfConfig.rx_address = 0x89816EA9;  // ZEHNDER_NETWORK_LINK_ID;
+  rfConfig.rx_address = 0xAAF770E5;
   rfConfig.rx_address_width = 4;
   rfConfig.rx_payload_width = 16;
 
@@ -171,6 +172,13 @@ void ZehnderRF::loop(void) {
     case StateStartup:
       // Wait until started up
       if (millis() > 15000) {
+        // Set config brute force
+        this->config_.fan_networkId = 0xAAF770E5;
+        this->config_.fan_my_device_type = 0x03;
+        this->config_.fan_my_device_id = 0x17;
+        this->config_.fan_main_unit_type = 0x12;
+        this->config_.fan_main_unit_id = 0xE6;
+        
         // Discovery?
         if ((this->config_.fan_networkId == 0x00000000) || (this->config_.fan_my_device_type == 0) ||
             (this->config_.fan_my_device_id == 0) || (this->config_.fan_main_unit_type == 0) ||
@@ -311,13 +319,13 @@ void ZehnderRF::rfHandleReceived(const uint8_t *const pData, const uint8_t dataL
             //  this->state_ = StateStartDiscovery;
             // });
 
-            //ESP_LOGW(TAG, "StateDiscoveryJoinComplete State Change Trigger Next");
-            //this->state_ = StateDiscoveryJoinComplete;
+            ESP_LOGW(TAG, "StateDiscoveryJoinComplete State Change Trigger Next");
+            this->state_ = StateDiscoveryJoinComplete;
 
             // added to just save settings
-            this->pref_.save(&this->config_);
+            //this->pref_.save(&this->config_);
 
-            this->state_ = StateIdle;
+            //this->state_ = StateIdle;
 
           } else {
             ESP_LOGE(TAG, "Discovery: Received unknown link success from ID 0x%02X on network 0x%08X", pResponse->tx_id,
